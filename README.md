@@ -1,6 +1,6 @@
 # Ant Shell
 
-A fresh repository for [Ant project](https://github.com/Almas-Ali/Ant) integreted with [TkTerm](https://github.com/dhanoosu/TkTerm) for a better user experience. 
+A fresh repository for [Ant project](https://github.com/Almas-Ali/Ant) integrated with [TkTerm](https://github.com/dhanoosu/TkTerm) for a better user experience. 
 
 ## Creators
 
