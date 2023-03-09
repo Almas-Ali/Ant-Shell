@@ -1,0 +1,6 @@
+[submodule "Ant"]
+	path = Ant
+	url = git@github.com:Almas-Ali/Ant.git
+[submodule "TkTerm"]
+	path = TkTerm
+	url = git@github.com:dhanoosu/TkTerm.git
