@@ -1,36 +1,21 @@
 from TkTerm.backend.InterpreterInterface import InterpreterInterface
 from TkTerm.backend.KThread import KThread
 
-# TODO:
-# dhanoo : Unsure how to intergrate this to your API. I have provide a simple function that can be called
 from Ant.src.lib.api import ANT_API
 
-import time
-import threading
+# Global variables
+API         = ANT_API()
+RETURNCODE  = 0
 
-# Global variable return code as it is not easy to get value from a thread
-returnCode = 0
-
-# Sample function to be run
-def loop(cmd):
-
-    i = 0
+def api_function_call(cmd):
+    """ Function call to API """
 
     # Calling the API to parse the command
-    ant = ANT_API()
-    ant.parser(cmd)
-    
-    # Run for 5 seconds
-    # while i < 5:
-    #     print(cmd)
-    #     time.sleep(1)
-    #     i += 1
+    API.parser(cmd)
 
     # Success: set a return code
-    global returnCode
-    returnCode = 0
-
-
+    global RETURNCODE
+    RETURNCODE = 0
 
 class Wrapper():
     """ Wrapper context manager class needed to comply with Terminal """
@@ -42,7 +27,7 @@ class Wrapper():
     def __enter__(self):
 
         # NOTE: a trailing comma inside args() is needed!!!
-        self.process = KThread(target=loop, args=(self.command,), daemon=True)
+        self.process = KThread(target=api_function_call, args=(self.command,), daemon=True)
         self.process.start()
         return self.process
 
@@ -64,8 +49,8 @@ class AntInterpreter(InterpreterInterface):
         processThread.kill()
 
         # Sets a return code
-        global returnCode
-        returnCode = -1
+        global RETURNCODE
+        RETURNCODE = -1
 
     def getReturnCode(self, process):
-        return returnCode
+        return RETURNCODE
