@@ -22,7 +22,7 @@ root = tk.Tk()
 root.title("Ant Terminal")
 root.geometry("700x400")
 
-terminal = Terminal(root, bd=0, text=SPLASH_ASCII)
+terminal = Terminal(root, text=SPLASH_ASCII)
 terminal.pack(fill=BOTH, expand=True)
 
 interpreter = AntInterpreter()
