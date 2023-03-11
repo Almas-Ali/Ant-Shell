@@ -2,7 +2,7 @@ from TkTerm.tkterm import *
 from AntInterpreter import AntInterpreter
 
 root = tk.Tk()
-root.title("Ant Terminal")
+root.title("Ant Shell")
 root.geometry("700x400")
 
 terminal = Terminal(root)
