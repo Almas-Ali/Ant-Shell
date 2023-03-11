@@ -1,4 +1,10 @@
-SPLASH_ASCII = """
+from AntInterpreter import AntInterpreter
+from TkTerm.tkterm import *
+from Ant.src.lib.api import ANT_API
+
+ANT = ANT_API()
+
+SPLASH_ASCII = f"""
 █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
                                                                               
                                                                               
@@ -9,14 +15,12 @@ SPLASH_ASCII = """
     ██   ██ ██   ████    ██        ███████ ██   ██ ███████ ███████ ███████    
                                                                               
                                                                               
-    Version: x.x.x
+    Version: {ANT.parser("version")}
                                                                               
 █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
                                                                               
 """
 
-from TkTerm.tkterm import *
-from AntInterpreter import AntInterpreter
 
 root = tk.Tk()
 root.title("Ant Shell")
