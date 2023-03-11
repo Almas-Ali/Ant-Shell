@@ -2,7 +2,7 @@ from AntInterpreter import AntInterpreter
 from TkTerm.tkterm import *
 from Ant.src.lib.api import ANT_API
 
-ANT = ANT_API()
+ANT = ANT_API() # Calling the ANT API
 
 SPLASH_ASCII = f"""
 █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
