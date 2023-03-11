@@ -3,7 +3,7 @@ from TkTerm.backend.KThread import KThread
 
 # TODO:
 # dhanoo : Unsure how to intergrate this to your API. I have provide a simple function that can be called
-# from Ant.src.lib.api import ANT_API
+from Ant.src.lib.api import ANT_API
 
 import time
 import threading
@@ -16,15 +16,21 @@ def loop(cmd):
 
     i = 0
 
+    # Calling the API to parse the command
+    ant = ANT_API()
+    ant.parser(cmd)
+    
     # Run for 5 seconds
-    while i < 5:
-        print(cmd)
-        time.sleep(1)
-        i += 1
+    # while i < 5:
+    #     print(cmd)
+    #     time.sleep(1)
+    #     i += 1
 
     # Success: set a return code
     global returnCode
     returnCode = 0
+
+
 
 class Wrapper():
     """ Wrapper context manager class needed to comply with Terminal """
