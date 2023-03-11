@@ -2,7 +2,6 @@ from AntInterpreter import AntInterpreter
 from TkTerm.tkterm import *
 from Ant.src.lib.core import __version__ as version
 
-
 SPLASH_ASCII = f"""
 █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
                                                                               
@@ -20,15 +19,23 @@ SPLASH_ASCII = f"""
                                                                               
 """
 
+def on_closing():
+    """ Exit dialog box """
 
-root = tk.Tk()
-root.title("Ant Shell")
-root.geometry("700x400")
+    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+        root.destroy()
 
-terminal = Terminal(root, text=SPLASH_ASCII)
-terminal.pack(fill=BOTH, expand=True)
+if __name__ == "__main__":
 
-interpreter = AntInterpreter()
-terminal.add_interpreter("Ant", interpreter, set_default=True)
+    root = tk.Tk()
+    root.title("Ant Shell")
+    root.geometry("700x400")
 
-root.mainloop()
+    terminal = Terminal(root, text=SPLASH_ASCII)
+    terminal.pack(fill=BOTH, expand=True)
+
+    interpreter = AntInterpreter()
+    terminal.add_interpreter("Ant", interpreter, set_default=True)
+
+    root.protocol("WM_DELETE_WINDOW", on_closing)
+    root.mainloop()
