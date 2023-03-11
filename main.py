@@ -1,8 +1,7 @@
 from AntInterpreter import AntInterpreter
 from TkTerm.tkterm import *
-from Ant.src.lib.api import ANT_API
+from Ant.src.lib.core import __version__ as version
 
-ANT = ANT_API() # Calling the ANT API
 
 SPLASH_ASCII = f"""
 █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
@@ -15,7 +14,7 @@ SPLASH_ASCII = f"""
     ██   ██ ██   ████    ██        ███████ ██   ██ ███████ ███████ ███████    
                                                                               
                                                                               
-    Version: {ANT.parser("version")}
+    Version: {version}
                                                                               
 █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
                                                                               
