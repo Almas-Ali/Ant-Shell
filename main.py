@@ -13,10 +13,10 @@ SPLASH_ASCII = f"""
     ██   ██ ██   ████    ██        ███████ ██   ██ ███████ ███████ ███████    
                                                                               
                                                                               
-    Version: {version}
+    ANT Interpreter version: {version}
+    Powered by TkTerm
                                                                               
 █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
-                                                                              
 """
 
 def on_closing():
