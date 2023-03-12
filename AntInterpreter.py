@@ -3,6 +3,8 @@ from TkTerm.backend.KThread import KThread
 
 from Ant.src.lib.api import ANT_API
 
+import re
+
 # Global variables
 API         = ANT_API()
 RETURNCODE  = 0
@@ -52,5 +54,11 @@ class AntInterpreter(InterpreterInterface):
         global RETURNCODE
         RETURNCODE = -1
 
-    def getReturnCode(self, process):
+    def get_return_code(self, process):
         return RETURNCODE
+
+    def get_prompt(self):
+        config = API.get_config()
+
+        # Strip color ANSI code
+        return re.sub(r'\x1b\[([0-9,A-Z]{1,2}(;[0-9]{1,2})?(;[0-9]{3})?)?[m|K]?', '', config["PROMPT"])

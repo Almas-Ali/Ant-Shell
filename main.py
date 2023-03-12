@@ -12,7 +12,6 @@ SPLASH_ASCII = f"""
     ██   ██ ██  ██ ██    ██             ██ ██   ██ ██      ██      ██         
     ██   ██ ██   ████    ██        ███████ ██   ██ ███████ ███████ ███████    
                                                                               
-                                                                              
     ANT Interpreter version: {version}
     Powered by TkTerm
                                                                               
@@ -31,7 +30,7 @@ if __name__ == "__main__":
     root.title("Ant Shell")
     root.geometry("700x400")
 
-    terminal = Terminal(root, text=SPLASH_ASCII)
+    terminal = Terminal(root, text=SPLASH_ASCII, init=False)
     terminal.pack(fill=BOTH, expand=True)
 
     interpreter = AntInterpreter()
