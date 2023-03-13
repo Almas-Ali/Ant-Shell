@@ -34,7 +34,7 @@ if __name__ == "__main__":
     terminal = Terminal(root, text=SPLASH_ASCII, init=False)
     terminal.pack(fill=BOTH, expand=True)
 
-    interpreter = AntInterpreter()
+    interpreter = AntInterpreter(gui_element=root)
     terminal.add_interpreter("Ant", interpreter, set_default=True)
 
     root.protocol("WM_DELETE_WINDOW", on_closing)

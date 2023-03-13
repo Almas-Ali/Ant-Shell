@@ -13,18 +13,23 @@ def api_function_call(cmd):
     """ Function call to API """
 
     # Calling the API to parse the command
+    if cmd == "exit":
+        GUI_ELEMENT.destroy()
     API.parser(cmd)
 
     # Success: set a return code
     global RETURNCODE
     RETURNCODE = 0
 
+
 class Wrapper():
     """ Wrapper context manager class needed to comply with Terminal """
 
-    def __init__(self, command):
+    def __init__(self, command, gui_element):
         self.command = command
         self.process = None
+        global GUI_ELEMENT
+        GUI_ELEMENT = gui_element
 
     def __enter__(self):
 
@@ -36,14 +41,16 @@ class Wrapper():
     def __exit__(self, *exec):
         self.process.join()
 
+
 class AntInterpreter(InterpreterInterface):
 
-    def __init__(self):
+    def __init__(self, gui_element: object = None):
         super().__init__()
         self.process = None
+        self.gui_element = gui_element
 
     def execute(self, command):
-        return Wrapper(command)
+        return Wrapper(command, self.gui_element)
 
     def terminate(self, processThread):
 
