@@ -6,8 +6,9 @@ from Ant.src.lib.api import ANT_API
 import re
 
 # Global variables
-API         = ANT_API()
-RETURNCODE  = 0
+API = ANT_API()
+RETURNCODE = 0
+
 
 def api_function_call(cmd):
     """ Function call to API """
