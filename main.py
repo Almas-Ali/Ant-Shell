@@ -19,11 +19,18 @@ SPLASH_ASCII = f"""
 █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
 """
 
+
 def on_closing():
     """ Exit dialog box """
 
-    if messagebox.askokcancel("Quit", "Do you want to quit?"):
+    if messagebox.askokcancel(
+        title="Quit",
+        message="Do you want to quit?",
+        icon='warning',
+        default='cancel'
+    ):
         root.destroy()
+
 
 if __name__ == "__main__":
 
