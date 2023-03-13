@@ -1,6 +1,7 @@
 from AntInterpreter import AntInterpreter
 from TkTerm.tkterm import *
 from Ant.src.lib.core import __version__ as version
+from tkinter import messagebox
 
 SPLASH_ASCII = f"""
 █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
