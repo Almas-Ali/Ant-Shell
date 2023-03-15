@@ -19,6 +19,8 @@ SPLASH_ASCII = f"""
 █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
 """
 
+WARNING_ICON_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "./warning.png"))
+
 class RootWrapper():
 
     def __init__(self, master):
@@ -80,7 +82,7 @@ class RootWrapper():
             buttonCancel["activebackground"] = "#ececec"
             buttonCancel["activeforeground"] = "black"
 
-        self.warningIcon = tk.PhotoImage(file=os.path.abspath("./warning.png"))
+        self.warningIcon = tk.PhotoImage(file=WARNING_ICON_PATH)
         icon = tk.Label(frameBody, image=self.warningIcon, bg="#303030")
         icon.pack(side=LEFT, padx=10)
 
