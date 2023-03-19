@@ -14,8 +14,6 @@ def api_function_call(cmd):
     """ Function call to API """
 
     # Calling the API to parse the command
-    if cmd == "exit":
-        GUI_ELEMENT.destroy()
     API.parser(cmd)
 
     # Success: set a return code
@@ -26,11 +24,9 @@ def api_function_call(cmd):
 class Wrapper():
     """ Wrapper context manager class needed to comply with Terminal """
 
-    def __init__(self, command, gui_element):
+    def __init__(self, command):
         self.command = command
         self.process = None
-        global GUI_ELEMENT
-        GUI_ELEMENT = gui_element
 
     def __enter__(self):
 
@@ -51,7 +47,11 @@ class AntInterpreter(InterpreterInterface):
         self.gui_element = gui_element
 
     def execute(self, command):
-        return Wrapper(command, self.gui_element)
+
+        if command == "exit":
+            self.gui_element.destroy()
+
+        return Wrapper(command)
 
     def terminate(self, processThread):
 
@@ -70,3 +70,8 @@ class AntInterpreter(InterpreterInterface):
 
         # Strip color ANSI code
         return re.sub(r'\x1b\[([0-9,A-Z]{1,2}(;[0-9]{1,2})?(;[0-9]{3})?)?[m|K]?', '', config["PROMPT"])
+
+    def get_history(self):
+
+        # return API.get_history()
+        return API.history
