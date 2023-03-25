@@ -1,4 +1,4 @@
-from AntInterpreter import AntInterpreter
+from AntInterpreter2 import AntInterpreter2
 from TkTerm.tkterm import *
 from Ant.src.lib.core import __version__ as version
 import os
@@ -107,7 +107,7 @@ if __name__ == "__main__":
     terminal = Terminal(root, text=SPLASH_ASCII, init=False)
     terminal.pack(fill=BOTH, expand=True)
 
-    interpreter = AntInterpreter(gui_element=root)
+    interpreter = AntInterpreter2(gui_element=root)
     terminal.add_interpreter("Ant", interpreter, set_default=True)
 
     RootWrapper(root)
