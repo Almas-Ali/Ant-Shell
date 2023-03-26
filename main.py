@@ -107,8 +107,11 @@ if __name__ == "__main__":
     terminal = Terminal(root, text=SPLASH_ASCII, init=False)
     terminal.pack(fill=BOTH, expand=True)
 
+    icon = PhotoImage(file="ant.png")
+    root.iconphoto(False, icon)
+
     interpreter = AntInterpreter2(gui_element=root)
-    terminal.add_interpreter("Ant", interpreter, set_default=True)
+    terminal.add_interpreter("Ant", interpreter, icon=icon, set_default=True)
 
     RootWrapper(root)
     root.mainloop()
