@@ -9,7 +9,7 @@ import os
 import sys
 
 # Adjust this according to where ANT is found
-ANT_EXECUTABLE = f"{sys.executable} Ant/src/ant.py"
+ANT_EXECUTABLE = f"{sys.executable} -u Ant/src/ant.py"
 
 API = ANT_API()
 
