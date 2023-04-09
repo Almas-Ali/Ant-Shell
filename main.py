@@ -1,22 +1,25 @@
+import tkinter as tk
+from tkinter import *
+from TkTerm.tkterm import Terminal
+
 from AntInterpreter2 import AntInterpreter2
-from TkTerm.tkterm import *
 from Ant.src.lib.core import __version__ as version
 import os
 
 SPLASH_ASCII = f"""
-█████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
-                                                                              
-                                                                              
-     █████  ███    ██ ████████     ███████ ██   ██ ███████ ██      ██         
-    ██   ██ ████   ██    ██        ██      ██   ██ ██      ██      ██         
-    ███████ ██ ██  ██    ██        ███████ ███████ █████   ██      ██         
-    ██   ██ ██  ██ ██    ██             ██ ██   ██ ██      ██      ██         
-    ██   ██ ██   ████    ██        ███████ ██   ██ ███████ ███████ ███████    
-                                                                              
+█████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████
+                                                                             
+                                                                             
+     █████  ███    ██ ████████     ███████ ██   ██ ███████ ██      ██        
+    ██   ██ ████   ██    ██        ██      ██   ██ ██      ██      ██        
+    ███████ ██ ██  ██    ██        ███████ ███████ █████   ██      ██        
+    ██   ██ ██  ██ ██    ██             ██ ██   ██ ██      ██      ██        
+    ██   ██ ██   ████    ██        ███████ ██   ██ ███████ ███████ ███████   
+                                                                             
     ANT Interpreter version: {version}
     Powered by TkTerm
-                                                                              
-█████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ 
+                                                                             
+█████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████ █████
 """
 
 WARNING_ICON_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "./warning.png"))
@@ -32,8 +35,28 @@ class RootWrapper():
 
         self.top = tk.Toplevel()
         self.top.title("Close this terminal?")
-        self.top.geometry("320x130")
         self.top.resizable(False, False)
+
+        width = 320
+        height = 130
+
+        # Set dialog box geometry
+        self.top.geometry("{}x{}".format(width, height))
+
+        # Get master current position
+        root_x = self.master.winfo_x()
+        root_y = self.master.winfo_y()
+
+        # Get master width and height
+        root_width = self.master.winfo_width()
+        root_height = self.master.winfo_height()
+
+        # Work out the new center coordinate
+        x = root_x + (root_width/2) - (width/2)
+        y = root_y + (root_height/2) - (height/2)
+
+        # Position dialog box to center
+        self.top.geometry("+%d+%d" % (x, y))
 
         # Make top a subwindow on root window
         self.top.transient(self.master)
