@@ -102,8 +102,8 @@ class RootWrapper():
             buttonCancel["activebackground"] = "#ececec"
             buttonCancel["activeforeground"] = "black"
 
-            buttonCancel["activebackground"] = "#ececec"
-            buttonCancel["activeforeground"] = "black"
+            buttonExit["activebackground"] = "#ececec"
+            buttonExit["activeforeground"] = "black"
 
         self.warningIcon = tk.PhotoImage(file=WARNING_ICON_PATH)
         icon = tk.Label(frameBody, image=self.warningIcon, bg="#303030")
