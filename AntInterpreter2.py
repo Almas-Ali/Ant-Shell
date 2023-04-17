@@ -37,7 +37,7 @@ class AntInterpreter2(InterpreterInterface):
         if command == "exit":
             self.gui_element.destroy()
 
-        return subprocess.Popen(f"{ANT_EXECUTABLE} -c '{command}'", **self.process_options, cwd=os.getcwd())
+        return subprocess.Popen(f"{ANT_EXECUTABLE} -c '{command}'", cwd=os.getcwd(), **self.process_options)
 
     def terminate(self, processThread):
 
