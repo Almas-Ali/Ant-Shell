@@ -25,8 +25,7 @@ class AntInterpreter2(InterpreterInterface):
             "shell"                 : True,
             "stdout"                : subprocess.PIPE,
             "stderr"                : subprocess.PIPE,
-            "universal_newlines"    : True,
-            "cwd"                   : os.getcwd()
+            "universal_newlines"    : True
         }
 
         # Ignore utf-8 decode error which sometimes happens on early terminating
@@ -38,7 +37,7 @@ class AntInterpreter2(InterpreterInterface):
         if command == "exit":
             self.gui_element.destroy()
 
-        return subprocess.Popen(f"{ANT_EXECUTABLE} -c '{command}'", **self.process_options)
+        return subprocess.Popen(f"{ANT_EXECUTABLE} -c '{command}'", **self.process_options, cwd=os.getcwd())
 
     def terminate(self, processThread):
 
@@ -73,10 +72,12 @@ class AntInterpreter2(InterpreterInterface):
         return process.poll()
 
     def get_prompt(self):
-        config = API.get_config()
+        # config = API.get_config()
 
         # Strip color ANSI code
-        return re.sub(r'\x1b\[([0-9,A-Z]{1,2}(;[0-9]{1,2})?(;[0-9]{3})?)?[m|K]?', '', config["PROMPT"])
+        # return re.sub(r'\x1b\[([0-9,A-Z]{1,2}(;[0-9]{1,2})?(;[0-9]{3})?)?[m|K]?', '', config["PROMPT"])
+
+        return os.getcwd() + ">> "
 
     def get_history(self):
 
