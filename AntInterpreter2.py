@@ -1,5 +1,5 @@
-from TkTerm.backend.InterpreterInterface import InterpreterInterface
-from TkTerm.backend.KThread import KThread
+from TkTerm.tkterm.backend.InterpreterInterface import InterpreterInterface
+from TkTerm.tkterm.backend.KThread import KThread
 
 from Ant.src.lib.api import ANT_API
 
